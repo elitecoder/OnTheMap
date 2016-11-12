@@ -8,20 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		8326C0991DD1B16200F954BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326C0981DD1B16200F954BF /* AppDelegate.swift */; };
-		8326C09B1DD1B16200F954BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326C09A1DD1B16200F954BF /* ViewController.swift */; };
+		8326C09B1DD1B16200F954BF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326C09A1DD1B16200F954BF /* LoginViewController.swift */; };
 		8326C09E1DD1B16200F954BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8326C09C1DD1B16200F954BF /* Main.storyboard */; };
 		8326C0A01DD1B16200F954BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8326C09F1DD1B16200F954BF /* Assets.xcassets */; };
 		8326C0A31DD1B16200F954BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8326C0A11DD1B16200F954BF /* LaunchScreen.storyboard */; };
+		8326C0B41DD25C5400F954BF /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326C0B31DD25C5400F954BF /* UdacityConstants.swift */; };
+		8326C0B61DD25C8F00F954BF /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8326C0B51DD25C8F00F954BF /* UdacityClient.swift */; };
+		837A35EA1DD25E510086404E /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A35E91DD25E510086404E /* UdacityConvenience.swift */; };
+		837A35F71DD29F3A0086404E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837A35F51DD29F3A0086404E /* FBSDKCoreKit.framework */; };
+		837A35F81DD29F3A0086404E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837A35F61DD29F3A0086404E /* FBSDKLoginKit.framework */; };
+		837A35FA1DD2A0760086404E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837A35F91DD2A0760086404E /* Bolts.framework */; };
+		837A35FD1DD2DB120086404E /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A35FC1DD2DB120086404E /* ParseClient.swift */; };
+		837A35FF1DD2DBC00086404E /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A35FE1DD2DBC00086404E /* ParseConstants.swift */; };
+		837A36011DD2DBD30086404E /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36001DD2DBD30086404E /* ParseConvenience.swift */; };
+		837A36031DD2FF900086404E /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36021DD2FF900086404E /* StudentLocation.swift */; };
+		837A36091DD3B50D0086404E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36081DD3B50D0086404E /* MapViewController.swift */; };
+		837A360B1DD3B5290086404E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A360A1DD3B5290086404E /* TableViewController.swift */; };
+		837A360D1DD3EE960086404E /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A360C1DD3EE960086404E /* LocationDataSource.swift */; };
+		837A360F1DD405480086404E /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A360E1DD405480086404E /* Utility.swift */; };
+		837A36141DD4FCD20086404E /* PostLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36131DD4FCD20086404E /* PostLocationViewController.swift */; };
+		837A36161DD5035D0086404E /* ShareLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36151DD5035D0086404E /* ShareLinkViewController.swift */; };
+		837A36671DD6546E0086404E /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A36661DD6546E0086404E /* CurrentUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8326C0951DD1B16200F954BF /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8326C0981DD1B16200F954BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8326C09A1DD1B16200F954BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8326C09A1DD1B16200F954BF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8326C09D1DD1B16200F954BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8326C09F1DD1B16200F954BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8326C0A21DD1B16200F954BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8326C0A41DD1B16200F954BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8326C0B31DD25C5400F954BF /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		8326C0B51DD25C8F00F954BF /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		837A35E91DD25E510086404E /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
+		837A35F01DD29DDE0086404E /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		837A35F51DD29F3A0086404E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = OnTheMap/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		837A35F61DD29F3A0086404E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = OnTheMap/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		837A35F91DD2A0760086404E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = OnTheMap/Frameworks/Bolts.framework; sourceTree = "<group>"; };
+		837A35FC1DD2DB120086404E /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		837A35FE1DD2DBC00086404E /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		837A36001DD2DBD30086404E /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
+		837A36021DD2FF900086404E /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		837A36081DD3B50D0086404E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		837A360A1DD3B5290086404E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		837A360C1DD3EE960086404E /* LocationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
+		837A360E1DD405480086404E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		837A36101DD4498F0086404E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		837A36111DD4498F0086404E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		837A36121DD4498F0086404E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		837A36131DD4FCD20086404E /* PostLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocationViewController.swift; sourceTree = "<group>"; };
+		837A36151DD5035D0086404E /* ShareLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLinkViewController.swift; sourceTree = "<group>"; };
+		837A36661DD6546E0086404E /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				837A35FA1DD2A0760086404E /* Bolts.framework in Frameworks */,
+				837A35F71DD29F3A0086404E /* FBSDKCoreKit.framework in Frameworks */,
+				837A35F81DD29F3A0086404E /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +81,7 @@
 			children = (
 				8326C0971DD1B16200F954BF /* OnTheMap */,
 				8326C0961DD1B16200F954BF /* Products */,
+				837A35ED1DD29C8F0086404E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +96,74 @@
 		8326C0971DD1B16200F954BF /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				8326C0AA1DD25BE000F954BF /* Model */,
 				8326C0981DD1B16200F954BF /* AppDelegate.swift */,
-				8326C09A1DD1B16200F954BF /* ViewController.swift */,
+				8326C09A1DD1B16200F954BF /* LoginViewController.swift */,
+				837A36081DD3B50D0086404E /* MapViewController.swift */,
+				837A360A1DD3B5290086404E /* TableViewController.swift */,
+				837A36131DD4FCD20086404E /* PostLocationViewController.swift */,
+				837A36151DD5035D0086404E /* ShareLinkViewController.swift */,
+				837A360E1DD405480086404E /* Utility.swift */,
 				8326C09C1DD1B16200F954BF /* Main.storyboard */,
 				8326C09F1DD1B16200F954BF /* Assets.xcassets */,
+				837A36101DD4498F0086404E /* Roboto-Medium.ttf */,
+				837A36111DD4498F0086404E /* Roboto-Regular.ttf */,
+				837A36121DD4498F0086404E /* Roboto-Thin.ttf */,
 				8326C0A11DD1B16200F954BF /* LaunchScreen.storyboard */,
 				8326C0A41DD1B16200F954BF /* Info.plist */,
+				837A35F01DD29DDE0086404E /* Bridging-Header.h */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		8326C0AA1DD25BE000F954BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8326C0AB1DD25BE600F954BF /* Client */,
+				837A36021DD2FF900086404E /* StudentLocation.swift */,
+				837A360C1DD3EE960086404E /* LocationDataSource.swift */,
+				837A36661DD6546E0086404E /* CurrentUser.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8326C0AB1DD25BE600F954BF /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				837A35FB1DD2DAFD0086404E /* ParseClient */,
+				8326C0AC1DD25BEC00F954BF /* UdacityClient */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		8326C0AC1DD25BEC00F954BF /* UdacityClient */ = {
+			isa = PBXGroup;
+			children = (
+				8326C0B51DD25C8F00F954BF /* UdacityClient.swift */,
+				8326C0B31DD25C5400F954BF /* UdacityConstants.swift */,
+				837A35E91DD25E510086404E /* UdacityConvenience.swift */,
+			);
+			name = UdacityClient;
+			sourceTree = "<group>";
+		};
+		837A35ED1DD29C8F0086404E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				837A35F91DD2A0760086404E /* Bolts.framework */,
+				837A35F51DD29F3A0086404E /* FBSDKCoreKit.framework */,
+				837A35F61DD29F3A0086404E /* FBSDKLoginKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		837A35FB1DD2DAFD0086404E /* ParseClient */ = {
+			isa = PBXGroup;
+			children = (
+				837A35FC1DD2DB120086404E /* ParseClient.swift */,
+				837A35FE1DD2DBC00086404E /* ParseConstants.swift */,
+				837A36001DD2DBD30086404E /* ParseConvenience.swift */,
+			);
+			name = ParseClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,11 +193,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Mukul Sharma";
 				TargetAttributes = {
 					8326C0941DD1B16200F954BF = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = FC967L3QRG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,8 +239,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8326C09B1DD1B16200F954BF /* ViewController.swift in Sources */,
+				837A36031DD2FF900086404E /* StudentLocation.swift in Sources */,
+				837A35FD1DD2DB120086404E /* ParseClient.swift in Sources */,
+				837A36011DD2DBD30086404E /* ParseConvenience.swift in Sources */,
+				837A36091DD3B50D0086404E /* MapViewController.swift in Sources */,
+				837A36141DD4FCD20086404E /* PostLocationViewController.swift in Sources */,
+				8326C09B1DD1B16200F954BF /* LoginViewController.swift in Sources */,
+				837A35EA1DD25E510086404E /* UdacityConvenience.swift in Sources */,
+				837A360B1DD3B5290086404E /* TableViewController.swift in Sources */,
+				837A360F1DD405480086404E /* Utility.swift in Sources */,
 				8326C0991DD1B16200F954BF /* AppDelegate.swift in Sources */,
+				8326C0B61DD25C8F00F954BF /* UdacityClient.swift in Sources */,
+				8326C0B41DD25C5400F954BF /* UdacityConstants.swift in Sources */,
+				837A35FF1DD2DBC00086404E /* ParseConstants.swift in Sources */,
+				837A36161DD5035D0086404E /* ShareLinkViewController.swift in Sources */,
+				837A36671DD6546E0086404E /* CurrentUser.swift in Sources */,
+				837A360D1DD3EE960086404E /* LocationDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +298,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -231,6 +349,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -260,11 +379,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FC967L3QRG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnTheMap/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.mukul.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnTheMap/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Frameworks/**";
 			};
 			name = Debug;
 		};
@@ -272,11 +398,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FC967L3QRG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OnTheMap/Frameworks",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.mukul.OnTheMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OnTheMap/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Frameworks/**";
 			};
 			name = Release;
 		};
@@ -299,6 +432,7 @@
 				8326C0A91DD1B16200F954BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
