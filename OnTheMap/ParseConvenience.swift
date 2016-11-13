@@ -95,6 +95,7 @@ extension ParseClient {
 		var queryStringParameters = [String:AnyObject]()
 		queryStringParameters[QueryStringKeys.Limit] = limit as AnyObject?
 		queryStringParameters[QueryStringKeys.Skip] = skip as AnyObject?
+		queryStringParameters[QueryStringKeys.Order] = QueryStringValues.Descending as AnyObject?
 		
 		/* 2. Make the request */
 		_ = taskForGETMethod(Methods.StudentLocation, parameters: queryStringParameters) { (result, error) in
