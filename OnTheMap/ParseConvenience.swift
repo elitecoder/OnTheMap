@@ -39,7 +39,6 @@ extension ParseClient {
 
 	func postStudentLocation(_ completionHandler: @escaping (_ success: Bool, _ error: String?) -> Void) {
 		
-		
 		/* 1. Specify request Body */
 		let user = CurrentUser.sharedInstance()
 		let jsonBody = "{\"uniqueKey\": \"\(user.key!)\", \"firstName\": \"\(user.firstName!)\", \"lastName\": \"\(user.lastName!)\",\"mapString\": \"\(user.locationString!)\", \"mediaURL\": \"\(user.sharedURL!)\",\"latitude\": \(user.latitude!), \"longitude\": \(user.longitude!)}"
@@ -52,7 +51,7 @@ extension ParseClient {
 				/* 3. Send the desired value(s) to completion handler */
 				if let error = error {
 					print(error)
-					completionHandler(false, "Posting Student Location failed.")
+					completionHandler(false, error.userInfo["NSLocalizedDescription"] as? String)
 				} else {
 					
 					guard let _ = result?[JSONResponseKeys.UpdatedAt] as! String? else {
@@ -72,7 +71,7 @@ extension ParseClient {
 				/* 3. Send the desired value(s) to completion handler */
 				if let error = error {
 					print(error)
-					completionHandler(false, "Posting Student Locations failed.")
+					completionHandler(false, error.userInfo["NSLocalizedDescription"] as? String)
 				} else {
 					
 					guard let _ = result?[JSONResponseKeys.ObjectID] as! String? else {
@@ -103,7 +102,7 @@ extension ParseClient {
 			/* 3. Send the desired value(s) to completion handler */
 			if let error = error {
 				print(error)
-				completionHandler(false, nil, "Getting Student Locations failed.")
+				completionHandler(false, nil, error.userInfo["NSLocalizedDescription"] as? String)
 			} else {
 				
 				guard let results = result?[JSONResponseKeys.Results] as! [Dictionary<String, AnyObject>]? else {
@@ -139,7 +138,7 @@ extension ParseClient {
 			/* 3. Send the desired value(s) to completion handler */
 			if let error = error {
 				print(error)
-				completionHandler(false, nil, "Getting Student Locations failed.")
+				completionHandler(false, nil, error.userInfo["NSLocalizedDescription"] as? String)
 			} else {
 				
 				guard let results = result?[JSONResponseKeys.Results] as! [Dictionary<String, AnyObject>]? else {

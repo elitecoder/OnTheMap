@@ -39,7 +39,7 @@ class ParseClient {
 			
 			/* GUARD: Was there an error? */
 			guard (error == nil) else {
-				sendError("There was an error with your request: \(error)")
+				sendError("There was an error with your request: \(error!.localizedDescription)")
 				return
 			}
 			
@@ -89,7 +89,7 @@ class ParseClient {
 			
 			/* GUARD: Was there an error? */
 			guard (error == nil) else {
-				sendError("There was an error with your request: \(error)")
+				sendError("There was an error with your request: \(error!.localizedDescription)")
 				return
 			}
 			
@@ -138,7 +138,7 @@ class ParseClient {
 			
 			/* GUARD: Was there an error? */
 			guard (error == nil) else {
-				sendError("There was an error with your request: \(error)")
+				sendError("There was an error with your request: \(error!.localizedDescription)")
 				return
 			}
 			
@@ -170,6 +170,7 @@ class ParseClient {
 		var parsedResult: AnyObject!
 		do {
 			parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+			print(parsedResult)
 		} catch {
 			let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
 			completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))

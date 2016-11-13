@@ -32,7 +32,13 @@ class ShareLinkViewController: UIViewController {
 	}
 	
 	@IBAction func cancel(_ sender: AnyObject) {
-		self.performSegue(withIdentifier: "UnwindToMapViewSegue", sender: self)
+		
+		switch (Utility.launchingView) {
+			case .MapView:
+					self.performSegue(withIdentifier: "UnwindToMapView", sender: self)
+			case .TableView:
+					self.performSegue(withIdentifier: "UnwindToTableView", sender: self)
+		}
 	}
 	
 	@IBAction func submit(_ sender: AnyObject) {
@@ -63,7 +69,18 @@ class ShareLinkViewController: UIViewController {
 
 		ParseClient.sharedInstance().postStudentLocation { (success, error) in
 			DispatchQueue.main.async {
-				self.performSegue(withIdentifier: "UnwindToMapViewSegue", sender: self)
+				if success {
+					switch (Utility.launchingView) {
+						case .MapView:
+							self.performSegue(withIdentifier: "UnwindToMapView", sender: self)
+						case .TableView:
+							self.performSegue(withIdentifier: "UnwindToTableView", sender: self)
+					}
+
+				}
+				else {
+					Utility.displayErrorAlert(inViewController: self, withMessage: error!)
+				}
 			}
 		}
 	}

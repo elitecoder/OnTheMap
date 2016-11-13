@@ -16,15 +16,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if let locations = LocationDataSource.sharedInstance().studentLocation {
+		if let locations = LocationDataSource.sharedInstance().studentLocations {
 			self.addAnnotationsToMapView(locations: locations)
 		}
 		else {
-			print("Location Data not available.")
-			
-			LocationDataSource.sharedInstance().refresh() { (success, error) in
+			// Location Data not available.
+			Utility.refreshLocationDataSource() { (success, error) in
 				DispatchQueue.main.async {
-					self.addAnnotationsToMapView(locations: LocationDataSource.sharedInstance().studentLocation!)
+					if success {
+					self.addAnnotationsToMapView(locations: LocationDataSource.sharedInstance().studentLocations!)
+					}
+					else {
+						Utility.displayErrorAlert(inViewController: self, withMessage: error!)
+					}
 				}
 			}
 		}
@@ -33,7 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		reloadAnnotations()
+		performMapRefresh()
 	}
 	
 	fileprivate func addAnnotationsToMapView(locations: [StudentLocation]) {
@@ -67,16 +71,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 	
 	@IBAction func postLocation(_ sender: AnyObject) {
 		
+		Utility.launchingView = .MapView
+		
 		// If the user has already posted before, simply ask them for overwrite permission
 		if let _ = ParseClient.sharedInstance().overwriteObjectId {
-			displayAlertForOverwrite()
+			Utility.displayAlertForOverwrite(viewController: self, triggerSegueIdentifier: "MapViewToPostLocationViewSegue")
 		}
 		else {
 			// Else, try and get old locations from Parse
 			ParseClient.sharedInstance().getCurrentUserLocations() { (success, locations, error) in
 				if success && locations!.count > 0 {
 					ParseClient.sharedInstance().overwriteObjectId = locations![0].objectId
-					self.displayAlertForOverwrite()
+					Utility.displayAlertForOverwrite(viewController: self, triggerSegueIdentifier: "MapViewToPostLocationViewSegue")
 				}
 				else {
 					DispatchQueue.main.async {
@@ -87,30 +93,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		}
 	}
 	
-	func displayAlertForOverwrite() {
-		var alertController:UIAlertController?
-		alertController = UIAlertController(title: "",
-		                                    message: "You have already posted a Student Location. Would you like to overwrite your Current Location?",
-		                                    preferredStyle: .alert)
-		
-		let overwrite = UIAlertAction(title: "Overwrite",
-		                                  style: UIAlertActionStyle.default,
-		                                  handler: { (action) in
-											DispatchQueue.main.async {
-												self.performSegue(withIdentifier: "PostLocationViewSegue", sender: self)
-											}
-		})
-		
-		let cancel = UIAlertAction(title: "Cancel",
-		                              style: UIAlertActionStyle.cancel,
-		                              handler: nil
-		)
-
-		alertController!.addAction(cancel)
-		alertController!.addAction(overwrite)
-		
-		self.present(alertController!, animated: true, completion: nil)
-	}
+	@IBAction func unwindToMapView(segue: UIStoryboardSegue) {}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "PostLocationViewSegue" {
@@ -122,26 +105,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 	@IBAction func refresh(_ sender: AnyObject) {
 		performMapRefresh()
 	}
+
+//	@IBAction func unwindToMapView(segue: UIStoryboardSegue) {
+//		if segue.identifier == "UnwindToMapViewSegue" {
+//			performMapRefresh()
+//		}
+//	}
 	
-	func performMapRefresh() {
-		LocationDataSource.sharedInstance().refresh { (success, error) in
-			if success {
-				DispatchQueue.main.async {
+	fileprivate func performMapRefresh() {
+		Utility.refreshLocationDataSource() { (success, error) in
+			DispatchQueue.main.async {
+				if success {
 					self.reloadAnnotations()
 				}
+				else {
+					Utility.displayErrorAlert(inViewController: self, withMessage: error!)
+				}
 			}
-		}
-	}
-	
-	@IBAction func unwindToMapView(segue: UIStoryboardSegue) {
-		if segue.identifier == "UnwindToMapViewSegue" {
-			performMapRefresh()
 		}
 	}
 
 	fileprivate func reloadAnnotations() {
 		
-		guard let newLocations = LocationDataSource.sharedInstance().studentLocation else {
+		guard let newLocations = LocationDataSource.sharedInstance().studentLocations else {
 			print("Location Data not available.")
 			return
 		}

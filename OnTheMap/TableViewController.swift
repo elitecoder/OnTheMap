@@ -19,7 +19,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		tableView.reloadData()
+		performTableDataRefresh()
 	}
 	
 	@IBAction func logout(_ sender: AnyObject) {
@@ -42,23 +42,41 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 	}
 	
 	@IBAction func postLocation(_ sender: AnyObject) {
-	}
-	
-	@IBAction func refresh(_ sender: AnyObject) {
-		LocationDataSource.sharedInstance().refresh { (success, error) in
-			if success {
-				DispatchQueue.main.async {
-					self.tableView.reloadData()
+
+		Utility.launchingView = .TableView
+		
+		// If the user has already posted before, simply ask them for overwrite permission
+		if let _ = ParseClient.sharedInstance().overwriteObjectId {
+			Utility.displayAlertForOverwrite(viewController: self, triggerSegueIdentifier: "TableViewToPostLocationViewSegue")
+		}
+		else {
+			// Else, try and get old locations from Parse
+			ParseClient.sharedInstance().getCurrentUserLocations() { (success, locations, error) in
+				if success && locations!.count > 0 {
+					ParseClient.sharedInstance().overwriteObjectId = locations![0].objectId
+					Utility.displayAlertForOverwrite(viewController: self, triggerSegueIdentifier: "TableViewToPostLocationViewSegue")
+				}
+				else {
+					DispatchQueue.main.async {
+						self.performSegue(withIdentifier: "PostLocationViewSegue", sender: self)
+					}
 				}
 			}
 		}
+
 	}
+	
+	@IBAction func refresh(_ sender: AnyObject) {
+		performTableDataRefresh()
+	}
+	
+	@IBAction func unwindToTableView(segue: UIStoryboardSegue) {}
 
 	// MARK: UITableViewDataSource Methods
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-		if let dataSource = LocationDataSource.sharedInstance().studentLocation {
+		if let dataSource = LocationDataSource.sharedInstance().studentLocations {
 			return dataSource.count
 		}
 		
@@ -67,7 +85,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-		let location = LocationDataSource.sharedInstance().studentLocation![indexPath.row]
+		let location = LocationDataSource.sharedInstance().studentLocations![indexPath.row]
 		
 		cell.imageView?.image = #imageLiteral(resourceName: "Pin")
 		cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
@@ -79,11 +97,24 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
-		let mediaURL = LocationDataSource.sharedInstance().studentLocation![indexPath.row].mediaURL
+		let mediaURL = LocationDataSource.sharedInstance().studentLocations![indexPath.row].mediaURL
 		
 		UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
 		
 		// Change the selected background view of the cell.
 		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	fileprivate func performTableDataRefresh() {
+		Utility.refreshLocationDataSource() { (success, error) in
+			DispatchQueue.main.async {
+				if success {
+					self.tableView.reloadData()
+				}
+				else {
+					Utility.displayErrorAlert(inViewController: self, withMessage: error!)
+				}
+			}
+		}
 	}
 }

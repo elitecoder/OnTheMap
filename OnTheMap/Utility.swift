@@ -8,7 +8,14 @@
 
 import Foundation
 
+enum LaunchingView {
+	case MapView
+	case TableView
+}
+
 struct Utility {
+	
+	static var launchingView: LaunchingView = .MapView
 	
 	static func displayErrorAlert(inViewController: UIViewController, withMessage: String) {
 		var alertController:UIAlertController?
@@ -45,4 +52,45 @@ struct Utility {
 		
 		return "Could not parse the data as JSON: '\(data)'"
 	}
+	
+	static func refreshLocationDataSource(completionHandler: @escaping (_ success: Bool, _ error: String?)->Void) {
+
+		ParseClient.sharedInstance().getAllLocations(withLimit: 100, andSkip: 0) { (success, studentLocations, error) in
+			if success {
+				
+				LocationDataSource.sharedInstance().studentLocations = studentLocations
+				
+				completionHandler(true, nil)
+			}
+			else {
+				completionHandler(false, error)
+			}
+		}
+	}
+	
+	static func displayAlertForOverwrite(viewController: UIViewController, triggerSegueIdentifier: String) {
+		var alertController:UIAlertController?
+		alertController = UIAlertController(title: "",
+		                                    message: "You have already posted a Student Location. Would you like to overwrite your Current Location?",
+		                                    preferredStyle: .alert)
+		
+		let overwrite = UIAlertAction(title: "Overwrite",
+		                              style: UIAlertActionStyle.default,
+		                              handler: { (action) in
+										DispatchQueue.main.async {
+											viewController.performSegue(withIdentifier: triggerSegueIdentifier, sender: viewController)
+										}
+		})
+		
+		let cancel = UIAlertAction(title: "Cancel",
+		                           style: UIAlertActionStyle.cancel,
+		                           handler: nil
+		)
+		
+		alertController!.addAction(cancel)
+		alertController!.addAction(overwrite)
+		
+		viewController.present(alertController!, animated: true, completion: nil)
+	}
+
 }

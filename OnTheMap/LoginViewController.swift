@@ -18,9 +18,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		emailTextField.text = "elitecoder.mukul@gmail.com"
-		passwordTextField.text = "mukulsharma"
-		
 		facebookLoginButton.readPermissions = ["public_profile", "email"];
 		facebookLoginButton.delegate = self
 	}
@@ -37,13 +34,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 			if success {
 				
 				client.getPublicUserData() { (success, error) in
-					if success {
-						DispatchQueue.main.async {
+					DispatchQueue.main.async {
+						if success {
 							self.performSegue(withIdentifier: "TabBarSegue", sender: self)
 						}
-					}
-					else {
-						DispatchQueue.main.async {
+						else {
 							Utility.displayErrorAlert(inViewController: self, withMessage: error!)
 						}
 					}
