@@ -6,11 +6,10 @@
 //  Copyright © 2016 Mukul Sharma. All rights reserved.
 //
 
-
-// MARK: - UdacityClient (Convenient Resource Methods)
-
 import UIKit
 import Foundation
+
+// MARK: - UdacityClient (Convenient Resource Methods)
 
 extension UdacityClient {
 

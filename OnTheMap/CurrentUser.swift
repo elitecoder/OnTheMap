@@ -8,7 +8,11 @@
 
 import Foundation
 
+// MARK: CurrentUser
+
 class CurrentUser {
+	
+	// MARK: Properties
 	
 	var key: String? = nil
 	var isFacebookLogin: Bool = false
@@ -20,6 +24,8 @@ class CurrentUser {
 	var sharedURL: String? = nil
 	var latitude: String? = nil
 	var longitude: String? = nil
+	
+	// MARK: Public Methods
 	
 	func clear() {
 		key = nil

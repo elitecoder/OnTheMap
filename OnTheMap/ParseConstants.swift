@@ -26,9 +26,7 @@ extension ParseClient {
 	}
 	
 	// MARK: Methods
-	struct Methods {
-		
-		// MARK: Authentication		
+	struct Methods {		
 		static let StudentLocation = "/StudentLocation"
 	}
 	
@@ -53,8 +51,6 @@ extension ParseClient {
 	
 	// MARK: JSON Response Keys
 	struct JSONResponseKeys {
-		
-		// MARK: Authorization
 		static let Results = "results"
 		static let Latitude = "latitude"
 		static let Longitude = "longitude"

@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - UdacityClient: NSObject
+// MARK: - UdacityClient
 
 class UdacityClient {
 	
@@ -178,6 +178,8 @@ class UdacityClient {
 				return task
 	}
 
+	// MARK: Internal Helper Methods
+	
 	// given raw JSON, return a usable Foundation object
 	fileprivate func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
 		

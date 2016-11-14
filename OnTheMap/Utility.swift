@@ -15,7 +15,11 @@ enum LaunchingView {
 
 struct Utility {
 	
+	// MARK: Properties
+	
 	static var launchingView: LaunchingView = .MapView
+	
+	// MARK: Public Static Methods
 	
 	static func displayErrorAlert(inViewController: UIViewController, withMessage: String) {
 		var alertController:UIAlertController?

@@ -10,10 +10,14 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+	// MARK: Properties
+	
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
 	@IBOutlet weak var stackView: UIStackView!
+	
+	// MARK: View Lifecycle Methods
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,11 +26,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 		facebookLoginButton.delegate = self
 	}
 	
+	// MARK: IBActions
+	
 	@IBAction func loginButtonPressed(_ sender: AnyObject) {
 		authenticateWithUdacity()
 	}
 	
-	func authenticateWithUdacity() {
+	@IBAction func signUpForUdacityAccount(_ sender: AnyObject) {
+		
+		let signupURL = NSURL(string: "https://www.udacity.com/account/auth#!/signup") as! URL
+		
+		UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
+	}
+	
+	// MARK: Internal Helper Methods
+	
+	fileprivate	func authenticateWithUdacity() {
 		let client = UdacityClient.sharedInstance()
 		
 		client.authenticateWithCredentials(email: emailTextField.text!, password: passwordTextField.text!) { (success, error) in
@@ -50,13 +65,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 				}
 			}
 		}
-	}
-	
-	@IBAction func signUpForUdacityAccount(_ sender: AnyObject) {
-		
-		let signupURL = NSURL(string: "https://www.udacity.com/account/auth#!/signup") as! URL
-		
-		UIApplication.shared.open(signupURL, options: [:], completionHandler: nil)
 	}
 	
 	// MARK: FBSDKLoginButtonDelegate Methods

@@ -10,9 +10,13 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	// MARK: Properties
+	
 	@IBOutlet weak var tableView: UITableView!
 	
-    override func viewDidLoad() {
+	// MARK: View Lifecycle Methods
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 	}
 	
@@ -21,6 +25,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 		
 		performTableDataRefresh()
 	}
+	
+	// MARK: IBActions
 	
 	@IBAction func logout(_ sender: AnyObject) {
 		
@@ -104,6 +110,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 		// Change the selected background view of the cell.
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
+	// MARK: Internal Helper Methods
 	
 	fileprivate func performTableDataRefresh() {
 		Utility.refreshLocationDataSource() { (success, error) in

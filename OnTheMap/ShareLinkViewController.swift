@@ -11,10 +11,14 @@ import MapKit
 
 class ShareLinkViewController: UIViewController {
 
+	// MARK: Properties
+	
 	@IBOutlet weak var urlTextField: UITextField!
 	@IBOutlet weak var mapView: MKMapView!
 	
 	var annotation: MKPointAnnotation? = nil
+	
+	// MARK: View Lifecycle Methods
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,8 @@ class ShareLinkViewController: UIViewController {
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		self.view.endEditing(true)
 	}
+	
+	// MARK: IBActions
 	
 	@IBAction func cancel(_ sender: AnyObject) {
 		

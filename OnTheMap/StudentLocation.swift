@@ -9,9 +9,12 @@
 import Foundation
 import MapKit
 
+// MARK: - StudentLocation
+
 struct StudentLocation {
 	
 	// MARK: Properties
+	
 	let coordinate: CLLocationCoordinate2D
 	let firstName: String
 	let lastName: String
@@ -19,6 +22,7 @@ struct StudentLocation {
 	let objectId: String?
 	
 	// MARK: Initializer
+	
 	init?(dictionary: [String: AnyObject]) {
 		
 		guard let latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double else {
@@ -63,6 +67,7 @@ struct StudentLocation {
 	}
 	
 	// MARK: Methods
+	
 	func getMapKitAnnotation() -> MKPointAnnotation {
 
 		let annotation = MKPointAnnotation()

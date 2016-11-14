@@ -11,7 +11,11 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+	// MARK: Properties
+	
 	@IBOutlet weak var mapView: MKMapView!
+	
+	// MARK: View Lifecycle Methods
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 		performMapRefresh()
 	}
 	
-	fileprivate func addAnnotationsToMapView(locations: [StudentLocation]) {
-		
-		var annotations = [MKAnnotation]()
-		for location in locations {
-			annotations.append(location.getMapKitAnnotation())
-		}
-		
-		mapView.addAnnotations(annotations)
-	}
+	// MARK: IBActions
 	
 	@IBAction func logout(_ sender: AnyObject) {
 		
@@ -92,6 +88,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 			}
 		}
 	}
+
+	@IBAction func refresh(_ sender: AnyObject) {
+		performMapRefresh()
+	}
 	
 	@IBAction func unwindToMapView(segue: UIStoryboardSegue) {}
 	
@@ -101,16 +101,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 			controller.region = mapView.region
 		}
 	}
-
-	@IBAction func refresh(_ sender: AnyObject) {
-		performMapRefresh()
-	}
-
-//	@IBAction func unwindToMapView(segue: UIStoryboardSegue) {
-//		if segue.identifier == "UnwindToMapViewSegue" {
-//			performMapRefresh()
-//		}
-//	}
+	
+	// MARK: Internal Helper Methods
 	
 	fileprivate func performMapRefresh() {
 		Utility.refreshLocationDataSource() { (success, error) in
@@ -123,6 +115,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 				}
 			}
 		}
+	}
+	
+	fileprivate func addAnnotationsToMapView(locations: [StudentLocation]) {
+		
+		var annotations = [MKAnnotation]()
+		for location in locations {
+			annotations.append(location.getMapKitAnnotation())
+		}
+		
+		mapView.addAnnotations(annotations)
 	}
 
 	fileprivate func reloadAnnotations() {

@@ -11,6 +11,8 @@ import MapKit
 
 class PostLocationViewController: UIViewController {
 
+	// MARK: Properties
+	
 	var region: MKCoordinateRegion? = nil
 	var annotation: MKPointAnnotation? = nil
 	
@@ -18,24 +20,20 @@ class PostLocationViewController: UIViewController {
 	@IBOutlet weak var findOnMapButton: UIButton!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
+	// MARK: View Lifecycle Methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		changeButtonVisibility(state: true)
     }
 	
-	func changeButtonVisibility(state:Bool) {
-	
-		DispatchQueue.main.async {
-			self.findOnMapButton.isHidden = !state
-			self.activityIndicator.isHidden = state
-		}
-	}
-	
 	// Dismiss keyboard when user touches outside the textfield
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		self.view.endEditing(true)
 	}
+	
+	// MARK: IBActions
 	
 	@IBAction func cancel(_ sender: AnyObject) {
 		self.dismiss(animated: true, completion: nil)
@@ -62,7 +60,6 @@ class PostLocationViewController: UIViewController {
 		search.start { (response, error) in
 			
 			guard let response = response else {
-				print(error)
 				Utility.displayErrorAlert(inViewController: self, withMessage: "Location search failed.")
 				self.changeButtonVisibility(state: true)
 				return
@@ -92,6 +89,16 @@ class PostLocationViewController: UIViewController {
 		if segue.identifier == "ShareLinkViewSegue" {
 			let controller = segue.destination as! ShareLinkViewController
 			controller.annotation = self.annotation
+		}
+	}
+	
+	// MARK: Internal Helper Methods
+	
+	fileprivate func changeButtonVisibility(state:Bool) {
+		
+		DispatchQueue.main.async {
+			self.findOnMapButton.isHidden = !state
+			self.activityIndicator.isHidden = state
 		}
 	}
 }
